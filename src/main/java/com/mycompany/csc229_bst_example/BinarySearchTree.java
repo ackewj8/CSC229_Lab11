@@ -4,6 +4,7 @@ package com.mycompany.csc229_bst_example;
  * @author MoaathAlrajab
  */
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 
 public class BinarySearchTree {
@@ -49,34 +50,68 @@ public class BinarySearchTree {
         }
         return insertNode(tmpNode, data);
     }
-
+    
     public void inOrderTraversal() {
         doInOrder(this.root);
     }
-
-    private void doInOrder(BstNode root) {
-
-        // ToDo 1: complete InOrder Traversal 
+    
+    public void preOrder(){
+        preOrderTraversal(this.root);
     }
-        public void preOrderTraversal() {
-        doPreOrder(this.root);
+
+    public void doInOrder(BstNode root) {
+
+        // ToDo 1: complete InOrder Traversal
+        if(root==null)
+            return;
+        doInOrder(root.getLeft());
+        System.out.println(root.getData());
+        doInOrder(root.getRight());
+        
+    }
+        public void preOrderTraversal(BstNode root) {
+        if(root==null) {
+            return;
+        }
+        System.out.println(root.getData());
+        preOrderTraversal(root.getLeft());
+        preOrderTraversal(root.getRight());
         // ToDo 2: complete the pre-order travesal . 
     }
-
-    public Integer findHeight() {
+        
+    public Integer findHeight(BstNode h) {
 
         // ToDo 3: Find the height of a tree
+        int height=0;
+        if(this.root==null)
+            height=-1;
+        return height;
     }
 
-    
-
-    public int getDepth(BstNode node) {
+    public int getDepth(BstNode root, int a) {
         //ToDo 4: complete getDepth of a node 
+        int depth=0;
+        if(root==null)
+            return -1;
+        if(Objects.equals(root.getData(), this.root.getData())){ // The root's depth is zero
+            depth=0;
+        }
+        else{
+            depth++;
+            if(n.getData()>root.getData()){
+                depth=getDepth(root.getRight(),a+1);
+            }
+        }
+        System.out.println(root.getData());
+        return depth;
     }
     
    public void print() {
        System.out.println("\n==== BST Print ===== \n");
-        print("", root, false);
+       print("", root, false);
+       
+       
+       
         // ToDo 5: complete the print of the BST
     }
 
